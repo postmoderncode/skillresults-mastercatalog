@@ -1,13 +1,12 @@
 export const environment = {
   firebase: {
-    apiKey: "AIzaSyBPiRWCBPhEE-b4dLHYjz6pFbFQAaA2XZk",
-    authDomain: "skillresults-test01.firebaseapp.com",
-    databaseURL: "https://skillresults-test01-default-rtdb.firebaseio.com",
-    projectId: "skillresults-test01",
-    storageBucket: "skillresults-test01.appspot.com",
-    messagingSenderId: "956534674644",
-    appId: "1:956534674644:web:ff8cefe83ccd2abeb81741",
-    measurementId: "G-357QXP4KRY"
+    apiKey: "AIzaSyCnF_kJzacLZMUKObGExiVa7bkCgLBrwWM",
+    authDomain: "skillresults-mastercatalog.firebaseapp.com",
+    databaseURL: "https://skillresults-mastercatalog-default-rtdb.firebaseio.com",
+    projectId: "skillresults-mastercatalog",
+    storageBucket: "skillresults-mastercatalog.appspot.com",
+    messagingSenderId: "449363934325",
+    appId: "1:449363934325:web:6f89671f8ca891dfabcc3c"
   },
   production: true
 };
