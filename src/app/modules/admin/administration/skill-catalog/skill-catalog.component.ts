@@ -208,40 +208,53 @@ export class SkillCatalogComponent implements OnInit {
 
   }
 
+
   onEdit(key: string): void {
 
-    let type: string;
+    //Cast model to variable for formReset
+    const mname: string = this.model.name;
+    const mdescription: string = this.model.description;
+    const mvalue: string = this.onConvertName(this.model.name);
 
-    //Switch catalog path based on item type
-    if (this.tabTitle.toLowerCase() === 'category') {
-      type = 'categories';
+    //Define and call Promise to add Item
+    if (this.tabTitle.toLowerCase() === 'area') {
+
+      this.db.object('/skillcatalog/areas/' + key)
+        .update({ name: mname, description: mdescription, value: mvalue });
+
+      this.showedititem = false;
+
     }
-    else {
-      type = this.tabTitle.toLowerCase() + 's';
+    else if (this.tabTitle.toLowerCase() === 'category') {
+
+      const marea: string = this.model.area;
+
+      this.db.object('/skillcatalog/categories/' + key)
+        .update({ name: mname, description: mdescription, value: mvalue, area: marea });
+
+      this.showedititem = false;
+
+    }
+    else { //this is a skill
+
+      const mcategory: string = this.model.category;
+
+      this.db.object('/skillcatalog/skills/' + key)
+        .update({ name: mname, description: mdescription, value: mvalue, category: mcategory });
+
+      this.showedititem = false;
+
     }
 
-    //Set Firebase Path
-    this.listRef = this.db.list('/skillcatalog/' + type);
-
-    // //Cast model to variable for formReset
-    // const mname: string = this.model.name;
-    // const mdescription: string = this.model.description;
-    // const mdatenow = Math.floor(Date.now());
-
-    // this.db.object('/users/' + this.fbuser.id + '/talents' + '/' + key)
-    //   .update({ name: mname, description: mdescription, created: mdatenow, modified: mdatenow, user: this.fbuser.id });
-    // this.db.object('/talents/' + this.fbuser.id + '/' + key)
-    //   .update({ name: mname, description: mdescription, created: mdatenow, modified: mdatenow, user: this.fbuser.id });
-    // this.showedititem = false;
-
-    console.log(key + ' edited');
   }
+
+
 
   onDelete(key: string): void {
 
     //this.db.object('/skillcatalog/' + this.fbuser.id + '/talents/' + key).remove();
 
-    console.log(key + ' deleted');
+    console.log('No Deleting Masters');
 
   }
 
@@ -256,6 +269,7 @@ export class SkillCatalogComponent implements OnInit {
     this.showadditem = false;
 
   }
+
 
   onShowEditForm(key: string): void {
 

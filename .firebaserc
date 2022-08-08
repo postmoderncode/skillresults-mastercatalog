@@ -1,5 +1,21 @@
 {
   "projects": {
     "default": "skillresults-mastercatalog"
+  },
+  "targets": {
+    "skillresults-application": {
+      "hosting": {
+        "fuse": [
+          "skillresults-mastercatalog"
+        ]
+      }
+    },
+    "skillresults-mastercatalog": {
+      "hosting": {
+        "fuse": [
+          "skillresults-mastercatalog"
+        ]
+      }
+    }
   }
 }

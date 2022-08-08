@@ -249,9 +249,6 @@
                                 <button mat-icon-button color="default" matTooltip="edit" class="mr-5" (click)="onShowEditForm(area.key);">
                                     <mat-icon>edit</mat-icon>
                                   </button>
-                                  <button mat-icon-button color="default" matTooltip="edit" class="mr-5" (click)="onHideItem(area.key);">
-                                    <mat-icon [svgIcon]="'heroicons_outline:eye-off'"></mat-icon>
-                                  </button>
                             </div> 
                             <a (click)="onAreaSelect(area.key)">
                                 <div class="flex items-center py-3 px-5 border-t-2 border-slate-100 hover:bg-slate-100 w-full">
@@ -284,9 +281,6 @@
                                 <button mat-icon-button color="default" matTooltip="edit" class="mr-5" (click)="onShowEditForm(category.key);">
                                     <mat-icon>edit</mat-icon>
                                   </button>
-                                  <button mat-icon-button color="default" matTooltip="edit" class="mr-5" (click)="onHideItem(category.key);">
-                                    <mat-icon [svgIcon]="'heroicons_outline:eye-off'"></mat-icon>
-                                  </button>
                             </div> 
                             <a (click)="onCategorySelect(category.key)">
                                 <div class="flex items-center py-3 px-5 border-t-2 border-slate-100 hover:bg-slate-100 w-full">
@@ -318,9 +312,6 @@
                             <div class="flex-none">
                                 <button mat-icon-button color="default" matTooltip="edit" class="mr-5" (click)="onShowEditForm(skill.key);">
                                     <mat-icon>edit</mat-icon>
-                                  </button>
-                                  <button mat-icon-button color="default" matTooltip="edit" class="mr-5" (click)="onHideItem(skill.key);">
-                                    <mat-icon [svgIcon]="'heroicons_outline:eye-off'"></mat-icon>
                                   </button>
                             </div> 
                             <a (click)="selectSkill(skill.key)">
