@@ -216,6 +216,7 @@
     <!-- SELECTOR WRAPPER -->
     <div class="container mx-auto sm:max-w-[500px] md:max-w-[600px] lg:max-w-[700px] xl:max-w-[800px] " [hidden]="showadditem||showedititem">
 
+
         <!-- SELECTOR TITLE -->
         <div class="flex items-center h-15">
 
@@ -241,40 +242,24 @@
                 <mat-tab label="Areas">
                     
                     <!--Repeat for Each Area-->
-                    <span *ngFor="let area of (areas)" >
+                    <span *ngFor="let area of (areas | async)" >
 
                         <div class="flex">
                             <div class="flex-none">
-                                
                                 <button mat-icon-button color="default" matTooltip="edit" class="mr-5" (click)="onShowEditForm(area.key);">
                                     <mat-icon>edit</mat-icon>
                                   </button>
-
-                                <span *ngIf="area.customs[0]?.payload.val().hidden === true">
-                                    <button mat-icon-button color="warn" matTooltip="unhide" class="mr-5" (click)="onHideItem(area.key);">
-                                        <mat-icon [svgIcon]="'heroicons_outline:eye-off'"></mat-icon>
-                                      </button>            
-                                </span>
-                                <span *ngIf="area.customs[0]?.payload.val().hidden !== true">
-                                    <button mat-icon-button color="default" matTooltip="hide" class="mr-5" (click)="onHideItem(area.key);">
-                                        <mat-icon [svgIcon]="'heroicons_outline:eye-off'"></mat-icon>
-                                      </button>                                     
-                                </span>
+                                  <button mat-icon-button color="default" matTooltip="edit" class="mr-5" (click)="onHideItem(area.key);">
+                                    <mat-icon [svgIcon]="'heroicons_outline:eye-off'"></mat-icon>
+                                  </button>
                             </div> 
-                            <a (click)="onAreaSelect(area.key)" title="{{ area.payload.val().description }}">
+                            <a (click)="onAreaSelect(area.key)">
                                 <div class="flex items-center py-3 px-5 border-t-2 border-slate-100 hover:bg-slate-100 w-full">
-                                    
-                                    <span *ngIf="!area.customs[0]?.payload.val().name">
+                           
                                     <div class="flex-1 w-100"> {{ area.payload.val().name }}</div>
-                                    </span>
-
-                                    <span *ngIf="area.customs[0]?.payload.val().name">
-                                        <div class="flex-1 w-100"> {{ area.customs[0]?.payload.val().name }}</div>
-                                    </span>
-
-                                    <div class="flex-none pt-1">
-                                        <mat-icon svgIcon="mat_solid:chevron_right"></mat-icon>
-                                    </div>  
+                                        <div class="flex-none pt-1">
+                                            <mat-icon svgIcon="mat_solid:chevron_right"></mat-icon>
+                                        </div>  
                                 </div>
                             </a>
                         </div>
@@ -298,29 +283,15 @@
                             <div class="flex-none">
                                 <button mat-icon-button color="default" matTooltip="edit" class="mr-5" (click)="onShowEditForm(category.key);">
                                     <mat-icon>edit</mat-icon>
-                                </button>
-                                <span *ngIf="category.customs[0]?.payload.val().hidden === true">
-                                    <button mat-icon-button color="warn" matTooltip="unhide" class="mr-5" (click)="onHideItem(category.key);">
-                                        <mat-icon [svgIcon]="'heroicons_outline:eye-off'"></mat-icon>
-                                    </button>            
-                                </span>
-                                 <span *ngIf="category.customs[0]?.payload.val().hidden !== true">
-                                    <button mat-icon-button color="default" matTooltip="hide" class="mr-5" (click)="onHideItem(category.key);">
-                                        <mat-icon [svgIcon]="'heroicons_outline:eye-off'"></mat-icon>
-                                    </button>                                     
-                                </span>
+                                  </button>
+                                  <button mat-icon-button color="default" matTooltip="edit" class="mr-5" (click)="onHideItem(category.key);">
+                                    <mat-icon [svgIcon]="'heroicons_outline:eye-off'"></mat-icon>
+                                  </button>
                             </div> 
-                            <a (click)="onCategorySelect(category.key)" title="{{ category.payload.val().description }}">
+                            <a (click)="onCategorySelect(category.key)">
                                 <div class="flex items-center py-3 px-5 border-t-2 border-slate-100 hover:bg-slate-100 w-full">
                            
-                                    <span *ngIf="!category.customs[0]?.payload.val().name">
-                                        <div class="flex-1 w-100"> {{ category.payload.val().name }}</div>
-                                    </span>
-    
-                                    <span *ngIf="category.customs[0]?.payload.val().name">
-                                         <div class="flex-1 w-100"> {{ category.customs[0]?.payload.val().name }}</div>
-                                     </span>
-
+                                    <div class="flex-1 w-100"> {{ category.payload.val().name }}</div>
                                         <div class="flex-none pt-1">
                                             <mat-icon svgIcon="mat_solid:chevron_right"></mat-icon>
                                         </div>  
@@ -347,29 +318,15 @@
                             <div class="flex-none">
                                 <button mat-icon-button color="default" matTooltip="edit" class="mr-5" (click)="onShowEditForm(skill.key);">
                                     <mat-icon>edit</mat-icon>
-                                </button>
-                                <span *ngIf="skill.customs[0]?.payload.val().hidden === true">
-                                    <button mat-icon-button color="warn" matTooltip="edit" class="mr-5" (click)="onHideItem(skill.key);">
-                                        <mat-icon [svgIcon]="'heroicons_outline:eye-off'"></mat-icon>
-                                    </button>            
-                                </span>
-                                <span *ngIf="skill.customs[0]?.payload.val().hidden !== true">
-                                    <button mat-icon-button color="default" matTooltip="edit" class="mr-5" (click)="onHideItem(skill.key);">
-                                        <mat-icon [svgIcon]="'heroicons_outline:eye-off'"></mat-icon>
-                                    </button>                                     
-                                </span>
+                                  </button>
+                                  <button mat-icon-button color="default" matTooltip="edit" class="mr-5" (click)="onHideItem(skill.key);">
+                                    <mat-icon [svgIcon]="'heroicons_outline:eye-off'"></mat-icon>
+                                  </button>
                             </div> 
-                            <a (click)="selectSkill(skill.key)" title="{{ skill.payload.val().description }}">
+                            <a (click)="selectSkill(skill.key)">
                                 <div class="flex items-center py-3 px-5 border-t-2 border-slate-100 hover:bg-slate-100 w-full">
                            
-                                    <span *ngIf="!skill.customs[0]?.payload.val().name">
-                                        <div class="flex-1 w-100"> {{ skill.payload.val().name }}</div>
-                                    </span>
-
-                                    <span *ngIf="skill.customs[0]?.payload.val().name">
-                                            <div class="flex-1 w-100"> {{ skill.customs[0]?.payload.val().name }}</div>
-                                    </span>
-
+                                    <div class="flex-1 w-100"> {{ skill.payload.val().name }}</div>
                                         <div class="flex-none pt-1">
                                             <mat-icon svgIcon="mat_solid:chevron_right"></mat-icon>
                                         </div>  
